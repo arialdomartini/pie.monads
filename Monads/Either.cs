@@ -1,4 +1,6 @@
 using System;
+using System.Xml.XPath;
+using static Monads.Functional;
 
 namespace Monads
 {
@@ -85,5 +87,13 @@ namespace Monads
 
         public override string ToString() => 
             Match(l => $"Left: {l}", r => $"Right: {r}");
+
+        public Either<TL, TN> Map<TN>(Func<TR, TN> f)
+        {
+            if (_isRight)
+                return Right<TN>(f(_right));
+            else
+                return Left<TL>(_left);
+        }
     }
 }

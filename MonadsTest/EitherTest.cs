@@ -1,3 +1,4 @@
+using System;
 using FluentAssertions;
 using Monads;
 using Xunit;
@@ -131,6 +132,28 @@ namespace MonadsTest
             var result = sut.ToString();
 
             result.Should().Be("Left(MonadsTest.Foo)");
+        }
+
+        [Fact]
+        public void mapping_on_the_right_should_apply_the_function()
+        {
+            Either<Foo, int> sut = Right(10);
+
+            var result = sut.Map(v => v * 2)
+                .Match(l => -1, r => r);
+
+            result.Should().Be(20);
+        }
+
+        [Fact]
+        public void mapping_on_left_values_should_result_in_left()
+        {
+            Either<int, int> sut = Left(10);
+
+            var result = sut.Map(v => v * 2)
+                .Match(l => -1, r => r);
+
+            result.Should().Be(-1);
         }
     }
 
