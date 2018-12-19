@@ -9,7 +9,7 @@ namespace Monads
 
         public static Either.Left<TL> Left<TL>(TL value) =>
             new Either.Left<TL>(value);
-    }
+            }
 
     public static class Either
     {
@@ -21,6 +21,8 @@ namespace Monads
             {
                 Value = value;
             }
+
+            public override string ToString() => $"Right({Value.ToString()})";
         }
 
         public struct Left<TL>
@@ -31,6 +33,8 @@ namespace Monads
             {
                 Value = value;
             }
+
+            public override string ToString() => $"Left({Value.ToString()})";
         }
     }
     
@@ -78,5 +82,8 @@ namespace Monads
 
         public Unit Match(Action<TL> left, Action<TR> right) =>
             Match(left.ToFunction(), right.ToFunction());
+
+        public override string ToString() => 
+            Match(l => $"Left: {l}", r => $"Right: {r}");
     }
 }

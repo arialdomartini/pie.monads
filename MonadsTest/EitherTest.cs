@@ -72,5 +72,69 @@ namespace MonadsTest
             invoked.Should().Be(true);
             result.Should().Be(unit);
         }
+
+        [Fact]
+        public void should_be_converted_to_string_providing_information_on_the_right_value()
+        {
+            Either<int, string> sut = Right("some value");
+
+            var result = sut.ToString();
+
+            result.Should().Contain("some value");
+        }
+
+        [Fact]
+        public void should_be_converted_to_string_providing_information_on_the_left_value()
+        {
+            Either<int, string> sut = Left(100);
+
+            var result = sut.ToString();
+
+            result.Should().Contain("100");
+        }
+
+        [Fact]
+        public void Right_should_convert_to_string_referencing_its_value()
+        {
+            var sut = Right("some value");
+
+            var result = sut.ToString();
+
+            result.Should().Be("Right(some value)");
+        }
+
+        [Fact]
+        public void Right_should_convert_to_string_delegating_conversion_to_its_value()
+        {
+            var sut = Right(new Foo());
+
+            var result = sut.ToString();
+
+            result.Should().Be("Right(MonadsTest.Foo)");
+        }
+
+        [Fact]
+        public void Left_should_convert_to_string_referencing_its_value()
+        {
+            var sut = Left("some value");
+
+            var result = sut.ToString();
+
+            result.Should().Be("Left(some value)");
+        }
+
+        [Fact]
+        public void Left_should_convert_to_string_delegating_conversion_to_its_value()
+        {
+            var sut = Left(new Foo());
+
+            var result = sut.ToString();
+
+            result.Should().Be("Left(MonadsTest.Foo)");
+        }
+    }
+
+    public class Foo
+    {
     }
 }
