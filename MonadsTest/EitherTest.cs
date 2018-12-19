@@ -46,5 +46,31 @@ namespace MonadsTest
 
             result.Should().Be(180);
         }
+
+        [Fact]
+        public void should_match_on_the_right_with_actions()
+        {
+            Either<int, string> sut = Right("some value");
+
+            var invoked = false;
+
+            var result = sut.Match(l => { invoked = false; }, r => { invoked = true; });
+
+            invoked.Should().Be(true);
+            result.Should().Be(unit);
+        }
+
+        [Fact]
+        public void should_match_on_the_left_with_actions()
+        {
+            Either<int, string> sut = Left(180);
+
+            var invoked = false;
+
+            var result = sut.Match(l => { invoked = true; }, r => { invoked = false; });
+
+            invoked.Should().Be(true);
+            result.Should().Be(unit);
+        }
     }
 }

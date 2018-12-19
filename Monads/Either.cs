@@ -74,6 +74,9 @@ namespace Monads
             Left(left.Value);
 
         public T Match<T>(Func<TL, T> leftFunc, Func<TR, T> rightFunc) => 
-            _isRight? rightFunc(_right) : leftFunc(_left);        
+            _isRight? rightFunc(_right) : leftFunc(_left);
+
+        public Unit Match(Action<TL> left, Action<TR> right) =>
+            Match(left.ToFunction(), right.ToFunction());
     }
 }
