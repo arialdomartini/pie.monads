@@ -1,9 +1,8 @@
 ﻿using FluentAssertions;
 using Xunit;
-using static Monads.Unit;
+using static Monads.Functional;
 using Unit = Monads.Unit;
 
-// ReSharper disable ArrangeStaticMemberQualifier
 namespace MonadsTest
 {
     public class UnitTest
