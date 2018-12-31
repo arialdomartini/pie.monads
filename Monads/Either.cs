@@ -96,6 +96,6 @@ namespace Monads
         }
 
         public Either<TL, TT> Bind<TT>(Func<TR, Either<TL, TT>> f) =>
-            _isRight? f(_right) : _left;
+            Match(l => l, f);
     }
 }
