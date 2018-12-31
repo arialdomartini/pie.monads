@@ -1,5 +1,4 @@
 using System;
-using System.Xml.XPath;
 using static Monads.Functional;
 
 namespace Monads
@@ -95,5 +94,8 @@ namespace Monads
             else
                 return Left<TL>(_left);
         }
+
+        public Either<TL, TT> Bind<TT>(Func<TR, Either<TL, TT>> f) =>
+            _isRight? f(_right) : _left;
     }
 }

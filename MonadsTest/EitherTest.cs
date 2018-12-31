@@ -155,6 +155,57 @@ namespace MonadsTest
 
             result.Should().Be(-1);
         }
+
+        [Fact]
+        public void should_bind_on_right_values()
+        {
+            Either<string, int> sut = Right(10);
+
+            Either<string, int> Double(int i)
+            {
+                return Right(i * 2);
+            }
+
+            var result = sut.Bind(Double);
+
+            var match = result.Match(l => -1, r => r);
+
+            match.Should().Be(20);
+        }
+
+        [Fact]
+        public void should_bind_on_right_values_on_failing_functions()
+        {
+            Either<string, int> sut = Right(10);
+
+            Either<string, int> Double(int i)
+            {
+                return Left("some error");
+            }
+
+            var result = sut.Bind(Double);
+
+            var match = result.Match(l => l, r => "should not happen");
+
+            match.Should().Be("some error");
+        }
+
+        [Fact]
+        public void should_bind_on_left_values()
+        {
+            Either<string, int> sut = Left("some error");
+
+            Either<string, int> Double(int i)
+            {
+                return Right(i * 2);
+            }
+
+            var result = sut.Bind(Double);
+
+            var match = result.Match(l => l, r => "should not happen");
+
+            match.Should().Be("some error");
+        }
     }
 
     public class Foo
