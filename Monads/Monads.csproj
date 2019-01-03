@@ -1,7 +1,12 @@
 ﻿<Project Sdk="Microsoft.NET.Sdk">
 
     <PropertyGroup>
-        <TargetFramework>netcoreapp2.2</TargetFramework>
+        <PackageId>Monads</PackageId>
+        <Title>A library to support functional programming in C#</Title>
+        <Version>1.0.2</Version>
+        <Authors>Arialdo Martini</Authors>
+        <PackageProjectUrl>https://github.com/arialdomartini/monads</PackageProjectUrl>
+        <TargetFramework>netstandard2.0</TargetFramework>
     </PropertyGroup>
 
 </Project>
