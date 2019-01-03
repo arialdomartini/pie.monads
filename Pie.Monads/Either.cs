@@ -89,9 +89,9 @@ namespace Pie.Monads
         public Either<TL, TN> Map<TN>(Func<TR, TN> f)
         {
             if (_isRight)
-                return Functional.Right<TN>(f(_right));
+                return Functional.Right(f(_right));
             else
-                return Functional.Left<TL>(_left);
+                return Functional.Left(_left);
         }
 
         public Either<TL, TT> Bind<TT>(Func<TR, Either<TL, TT>> f) =>
