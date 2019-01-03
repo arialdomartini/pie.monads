@@ -1,4 +1,4 @@
-﻿namespace Monads
+﻿namespace Pie.Monads
 {
     public static partial class Functional
     {

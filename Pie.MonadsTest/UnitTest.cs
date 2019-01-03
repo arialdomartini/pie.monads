@@ -1,9 +1,9 @@
 ﻿using FluentAssertions;
+using Pie.Monads;
 using Xunit;
-using static Monads.Functional;
-using Unit = Monads.Unit;
+using Unit = Pie.Monads.Unit;
 
-namespace MonadsTest
+namespace Pie.MonadsTest
 {
     public class UnitTest
     {
@@ -19,7 +19,7 @@ namespace MonadsTest
         [Fact]
         public void it_should_possible_to_create_a_Unit_with_one_single_word()
         {
-            var a = unit;
+            var a = Functional.unit;
             var b = Unit.Build();
 
             a.Should().Be(b);

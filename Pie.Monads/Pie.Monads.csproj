@@ -1,7 +1,7 @@
 ﻿<Project Sdk="Microsoft.NET.Sdk">
 
     <PropertyGroup>
-        <PackageId>Monads</PackageId>
+        <PackageId>Pie.Monads</PackageId>
         <Title>A library to support functional programming in C#</Title>
         <Version>1.0.2</Version>
         <Authors>Arialdo Martini</Authors>

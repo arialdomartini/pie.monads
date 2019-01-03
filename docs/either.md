@@ -1,4 +1,4 @@
-# Either
+v# Either
 `Either<TLeft, TRight>` is a monadic type that incorporates the context of possible failures to values. It is tipically used to apply functions to value and to provide useful information regarding the possible failures.
 
 An `Either<TLeft, TRight>` value can either be a `TRight` value , signifying a right value, or a success, or a `TLeft` value, signifying a failure.
@@ -43,13 +43,13 @@ Casting cannot be used when working with `Either` values whose left and right ty
 Usually, it is best to use the factory methods `Right()` and `Left()`. These can be made available with the directive: 
 
 ```csharp
-using static Monads.Functional;
+using static Pie.Monads.Functional;
 ```
 
 This approach is especially useful when it's not immediately clear that the left type represents a failure. Say for example that a method returns a string message in case of failures, and an integer in case of success. The use of `Right` and `Left` makes it clear when the code deals with failures and successful values:
 
 ```csharp
-using static Monads.Functional;
+using static Pie.Monads.Functional;
 
 public class Example
 {
@@ -67,7 +67,7 @@ public class Example
 This also works when the left and the right values have the same type:
 
 ```csharp
-using static Monads.Functional;
+using static Pie.Monads.Functional;
 
 public class Example
 {

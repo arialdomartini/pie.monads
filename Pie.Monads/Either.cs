@@ -1,7 +1,6 @@
 using System;
-using static Monads.Functional;
 
-namespace Monads
+namespace Pie.Monads
 {
     public static partial class Functional
     {
@@ -90,9 +89,9 @@ namespace Monads
         public Either<TL, TN> Map<TN>(Func<TR, TN> f)
         {
             if (_isRight)
-                return Right<TN>(f(_right));
+                return Functional.Right<TN>(f(_right));
             else
-                return Left<TL>(_left);
+                return Functional.Left<TL>(_left);
         }
 
         public Either<TL, TT> Bind<TT>(Func<TR, Either<TL, TT>> f) =>

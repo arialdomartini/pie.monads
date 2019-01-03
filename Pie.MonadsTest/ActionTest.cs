@@ -1,11 +1,10 @@
 using System;
 using System.Collections.Generic;
 using FluentAssertions;
-using Monads;
-using static Monads.Functional;
+using Pie.Monads;
 using Xunit;
 
-namespace MonadsTest
+namespace Pie.MonadsTest
 {
     public class ActionTest
     {
@@ -21,7 +20,7 @@ namespace MonadsTest
             var result = function("some value");
 
             invokedWith.Should().Be("some value");
-            result.Should().Be(unit);
+            result.Should().Be(Functional.unit);
         }
 
         [Fact]
@@ -42,7 +41,7 @@ namespace MonadsTest
                 "value 1",
                 "value 2"
             });
-            result.Should().Be(unit);
+            result.Should().Be(Functional.unit);
         }
         
         [Fact]
@@ -65,7 +64,7 @@ namespace MonadsTest
                 "value 2",
                 "value 3"
             });
-            result.Should().Be(unit);
+            result.Should().Be(Functional.unit);
         }
 
         [Fact]
@@ -90,7 +89,7 @@ namespace MonadsTest
                 "value 3",
                 "value 4"
             });
-            result.Should().Be(unit);
+            result.Should().Be(Functional.unit);
         }
     }
 }

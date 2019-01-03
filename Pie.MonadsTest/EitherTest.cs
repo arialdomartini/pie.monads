@@ -1,9 +1,8 @@
 using FluentAssertions;
-using Monads;
+using Pie.Monads;
 using Xunit;
-using static Monads.Functional;
 
-namespace MonadsTest
+namespace Pie.MonadsTest
 {
     public class EitherTest
     {
@@ -30,7 +29,7 @@ namespace MonadsTest
         [Fact]
         public void should_implicitly_convert_from_Right()
         {
-            Either<int, string> sut = Right("some value");
+            Either<int, string> sut = Functional.Right("some value");
 
             var result = sut.Match(l => null, r => r);
 
@@ -40,7 +39,7 @@ namespace MonadsTest
         [Fact]
         public void should_implicitly_convert_from_Left()
         {
-            Either<int, string> sut = Left(180);
+            Either<int, string> sut = Functional.Left(180);
 
             var result = sut.Match(l => l, r => -1);
 
@@ -50,33 +49,33 @@ namespace MonadsTest
         [Fact]
         public void should_match_on_the_right_with_actions()
         {
-            Either<int, string> sut = Right("some value");
+            Either<int, string> sut = Functional.Right("some value");
 
             var invoked = false;
 
             var result = sut.Match(l => { invoked = false; }, r => { invoked = true; });
 
             invoked.Should().Be(true);
-            result.Should().Be(unit);
+            result.Should().Be(Functional.unit);
         }
 
         [Fact]
         public void should_match_on_the_left_with_actions()
         {
-            Either<int, string> sut = Left(180);
+            Either<int, string> sut = Functional.Left(180);
 
             var invoked = false;
 
             var result = sut.Match(l => { invoked = true; }, r => { invoked = false; });
 
             invoked.Should().Be(true);
-            result.Should().Be(unit);
+            result.Should().Be(Functional.unit);
         }
 
         [Fact]
         public void should_be_converted_to_string_providing_information_on_the_right_value()
         {
-            Either<int, string> sut = Right("some value");
+            Either<int, string> sut = Functional.Right("some value");
 
             var result = sut.ToString();
 
@@ -86,7 +85,7 @@ namespace MonadsTest
         [Fact]
         public void should_be_converted_to_string_providing_information_on_the_left_value()
         {
-            Either<int, string> sut = Left(100);
+            Either<int, string> sut = Functional.Left(100);
 
             var result = sut.ToString();
 
@@ -96,7 +95,7 @@ namespace MonadsTest
         [Fact]
         public void Right_should_convert_to_string_referencing_its_value()
         {
-            var sut = Right("some value");
+            var sut = Functional.Right("some value");
 
             var result = sut.ToString();
 
@@ -106,17 +105,17 @@ namespace MonadsTest
         [Fact]
         public void Right_should_convert_to_string_delegating_conversion_to_its_value()
         {
-            var sut = Right(new Foo());
+            var sut = Functional.Right(new Foo());
 
             var result = sut.ToString();
 
-            result.Should().Be("Right(MonadsTest.Foo)");
+            result.Should().Be("Right(Pie.MonadsTest.Foo)");
         }
 
         [Fact]
         public void Left_should_convert_to_string_referencing_its_value()
         {
-            var sut = Left("some value");
+            var sut = Functional.Left("some value");
 
             var result = sut.ToString();
 
@@ -126,17 +125,17 @@ namespace MonadsTest
         [Fact]
         public void Left_should_convert_to_string_delegating_conversion_to_its_value()
         {
-            var sut = Left(new Foo());
+            var sut = Functional.Left(new Foo());
 
             var result = sut.ToString();
 
-            result.Should().Be("Left(MonadsTest.Foo)");
+            result.Should().Be("Left(Pie.MonadsTest.Foo)");
         }
 
         [Fact]
         public void mapping_on_the_right_should_apply_the_function()
         {
-            Either<Foo, int> sut = Right(10);
+            Either<Foo, int> sut = Functional.Right(10);
 
             var result = sut.Map(v => v * 2)
                 .Match(l => -1, r => r);
@@ -147,7 +146,7 @@ namespace MonadsTest
         [Fact]
         public void mapping_on_left_values_should_result_in_left()
         {
-            Either<int, int> sut = Left(10);
+            Either<int, int> sut = Functional.Left(10);
 
             var result = sut.Map(v => v * 2)
                 .Match(l => -1, r => r);
@@ -158,11 +157,11 @@ namespace MonadsTest
         [Fact]
         public void should_bind_on_right_values()
         {
-            Either<string, int> sut = Right(10);
+            Either<string, int> sut = Functional.Right(10);
 
             Either<string, int> Double(int i)
             {
-                return Right(i * 2);
+                return Functional.Right(i * 2);
             }
 
             var result = sut.Bind(Double);
@@ -175,11 +174,11 @@ namespace MonadsTest
         [Fact]
         public void should_bind_on_right_values_on_failing_functions()
         {
-            Either<string, int> sut = Right(10);
+            Either<string, int> sut = Functional.Right(10);
 
             Either<string, int> Double(int i)
             {
-                return Left("some error");
+                return Functional.Left("some error");
             }
 
             var result = sut.Bind(Double);
@@ -192,11 +191,11 @@ namespace MonadsTest
         [Fact]
         public void should_bind_on_left_values()
         {
-            Either<string, int> sut = Left("some error");
+            Either<string, int> sut = Functional.Left("some error");
 
             Either<string, int> Double(int i)
             {
-                return Right(i * 2);
+                return Functional.Right(i * 2);
             }
 
             var result = sut.Bind(Double);
