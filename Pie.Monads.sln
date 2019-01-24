@@ -2,7 +2,7 @@
 Microsoft Visual Studio Solution File, Format Version 12.00
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Pie.Monads", "Pie.Monads\Pie.Monads.csproj", "{E96FB6F6-9BF5-4286-91CA-BDC1744CB114}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Pie.MonadsTest", "Pie.MonadsTest\Pie.MonadsTest.csproj", "{6205C436-73CF-4DE7-A865-A71C4E49C3C6}"
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Pie.Monads.Test", "Pie.Monads.Test\Pie.Monads.Test.csproj", "{6205C436-73CF-4DE7-A865-A71C4E49C3C6}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
