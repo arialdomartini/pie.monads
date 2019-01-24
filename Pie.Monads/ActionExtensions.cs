@@ -4,6 +4,9 @@ namespace Pie.Monads
 {
     public static class ActionExtensions
     {
+        public static Func<Unit> ToFunction(this Action action) =>
+            () => { action(); return Functional.unit; };
+
         public static Func<T, Unit> ToFunction<T>(this Action<T> action) =>
             t1 => { action(t1); return Functional.unit; };
 

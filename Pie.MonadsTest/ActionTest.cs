@@ -9,7 +9,22 @@ namespace Pie.MonadsTest
     public class ActionTest
     {
         [Fact]
-        public void should_convert_action_with_1_parameter_to_functions()
+        public void should_convert_actions_with_no_parameters_to_functions()
+        {
+            var invokedWith = "not invoked";
+
+            var action = new Action(() => { invokedWith = "invoked"; });
+
+            var function = action.ToFunction();
+
+            var result = function();
+
+            invokedWith.Should().Be("invoked");
+            result.Should().Be(Functional.unit);
+        }
+
+        [Fact]
+        public void should_convert_actions_with_1_parameter_to_functions()
         {
             var invokedWith = "not invoked";
 
@@ -24,7 +39,7 @@ namespace Pie.MonadsTest
         }
 
         [Fact]
-        public void should_convert_action_with_2_parameters_to_functions()
+        public void should_convert_actions_with_2_parameters_to_functions()
         {
             var arguments = new List<string>();
 
@@ -45,7 +60,7 @@ namespace Pie.MonadsTest
         }
         
         [Fact]
-        public void should_convert_action_with_3_parameters_to_functions()
+        public void should_convert_actions_with_3_parameters_to_functions()
         {
             var arguments = new List<string>();
 
@@ -68,7 +83,7 @@ namespace Pie.MonadsTest
         }
 
         [Fact]
-        public void should_convert_action_with_4_parameters_to_functions()
+        public void should_convert_actions_with_4_parameters_to_functions()
         {
             var arguments = new List<string>();
 
