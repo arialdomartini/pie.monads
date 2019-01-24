@@ -6,7 +6,7 @@
         <Version>1.0.4</Version>
         <Authors>Arialdo Martini</Authors>
         <PackageProjectUrl>https://github.com/arialdomartini/monads</PackageProjectUrl>
-        <TargetFrameworks>netstandard2.0;net40</TargetFrameworks>
+        <TargetFrameworks>netstandard2;net40</TargetFrameworks>
     </PropertyGroup>
 
 </Project>
