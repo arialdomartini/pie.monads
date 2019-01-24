@@ -3,10 +3,10 @@
     <PropertyGroup>
         <PackageId>Pie.Monads</PackageId>
         <Title>A library to support functional programming in C#</Title>
-        <Version>1.0.4</Version>
+        <Version>1.0.5</Version>
         <Authors>Arialdo Martini</Authors>
         <PackageProjectUrl>https://github.com/arialdomartini/monads</PackageProjectUrl>
-        <TargetFrameworks>netstandard2.0;net40</TargetFrameworks>
+        <TargetFrameworks>netstandard2;net40</TargetFrameworks>
     </PropertyGroup>
 
 </Project>
