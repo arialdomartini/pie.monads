@@ -1,10 +1,9 @@
 using System;
 using System.Collections.Generic;
 using FluentAssertions;
-using Pie.Monads;
 using Xunit;
 
-namespace Pie.MonadsTest
+namespace Pie.Monads.Test
 {
     public class ActionTest
     {
