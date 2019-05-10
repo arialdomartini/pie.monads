@@ -1,4 +1,4 @@
-v# Either
+# Either
 `Either<TLeft, TRight>` is a monadic type that incorporates the context of possible failures to values. It is tipically used to apply functions to value and to provide useful information regarding the possible failures.
 
 An `Either<TLeft, TRight>` value can either be a `TRight` value , signifying a right value, or a success, or a `TLeft` value, signifying a failure.
